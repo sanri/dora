@@ -1,0 +1,473 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Getting started - dora-rs</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">1.</strong> installation</a></li><li class="chapter-item expanded "><a href="getting-started.html" class="active"><strong aria-hidden="true">2.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">Reference Guide</li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li class="chapter-item expanded "><a href="dataflow-config.html"><strong aria-hidden="true">4.</strong> Dataflow Configuration</a></li><li class="chapter-item expanded "><a href="rust-api.html"><strong aria-hidden="true">5.</strong> Rust API</a></li><li class="chapter-item expanded "><a href="c-api.html"><strong aria-hidden="true">6.</strong> C API</a></li><li class="chapter-item expanded "><a href="python-api.html"><strong aria-hidden="true">7.</strong> Python API</a></li><li class="chapter-item expanded affix "><li class="part-title">Brainstorming Ideas</li><li class="chapter-item expanded "><a href="state-management.html"><strong aria-hidden="true">8.</strong> State Management</a></li><li class="chapter-item expanded "><a href="library-vs-framework.html"><strong aria-hidden="true">9.</strong> Library vs Framework</a></li><li class="chapter-item expanded "><a href="communication-layer.html"><strong aria-hidden="true">10.</strong> Middleware Layer Abstraction</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">dora-rs</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="create-a-rust-workspace"><a class="header" href="#create-a-rust-workspace">Create a Rust workspace</a></h3>
+<ul>
+<li>Initiate the workspace with:</li>
+</ul>
+<pre><code class="language-bash">mkdir my_first_dataflow
+cd my_first_dataflow
+</code></pre>
+<ul>
+<li>Create the Cargo.toml file that will configure the entire workspace:</li>
+</ul>
+<p><code>Cargo.toml</code></p>
+<pre><code class="language-toml">[workspace]
+
+members = [
+    &quot;rust-dataflow-example-node&quot;,
+]
+</code></pre>
+<h3 id="write-your-first-node"><a class="header" href="#write-your-first-node">Write your first node</a></h3>
+<p>Let's write a node which sends the current time periodically. Let's make it after 100 iterations. The other nodes/operators will then exit as well because all sources closed.</p>
+<ul>
+<li>Generate a new Rust binary (application):</li>
+</ul>
+<pre><code class="language-bash">cargo new rust-dataflow-example-node
+</code></pre>
+<p>with <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[package]
+name = &quot;rust-dataflow-example-node&quot;
+version.workspace = true
+edition = &quot;2021&quot;
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dora-node-api = { workspace = true, features = [&quot;tracing&quot;] }
+eyre = &quot;0.6.8&quot;
+futures = &quot;0.3.21&quot;
+rand = &quot;0.8.5&quot;
+tokio = { version = &quot;1.24.2&quot;, features = [&quot;rt&quot;, &quot;macros&quot;] }
+</code></pre>
+<p>with <code>src/main.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use dora_node_api::{self, dora_core::config::DataId, DoraNode, Event};
+
+fn main() -&gt; eyre::Result&lt;()&gt; {
+    println!(&quot;hello&quot;);
+
+    let output = DataId::from(&quot;random&quot;.to_owned());
+
+    let (mut node, mut events) = DoraNode::init_from_env()?;
+
+    for i in 0..100 {
+        let event = match events.recv() {
+            Some(input) =&gt; input,
+            None =&gt; break,
+        };
+
+        match event {
+            Event::Input {
+                id,
+                metadata,
+                data: _,
+            } =&gt; match id.as_str() {
+                &quot;tick&quot; =&gt; {
+                    let random: u64 = rand::random();
+                    println!(&quot;tick {i}, sending {random:#x}&quot;);
+                    let data: &amp;[u8] = &amp;random.to_le_bytes();
+                    node.send_output(output.clone(), metadata.parameters, data.len(), |out| {
+                        out.copy_from_slice(data);
+                    })?;
+                }
+                other =&gt; eprintln!(&quot;Ignoring unexpected input `{other}`&quot;),
+            },
+            Event::Stop =&gt; println!(&quot;Received manual stop&quot;),
+            other =&gt; eprintln!(&quot;Received unexpected input: {other:?}&quot;),
+        }
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="write-your-first-operator"><a class="header" href="#write-your-first-operator">Write your first operator</a></h3>
+<ul>
+<li>Generate a new Rust library:</li>
+</ul>
+<pre><code class="language-bash">cargo new rust-dataflow-example-operator --lib
+</code></pre>
+<p>with <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[package]
+name = &quot;rust-dataflow-example-operator&quot;
+version.workspace = true
+edition = &quot;2021&quot;
+license.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = [&quot;cdylib&quot;]
+
+[dependencies]
+dora-operator-api = { workspace = true }
+</code></pre>
+<p>with <code>src/lib.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![warn(unsafe_op_in_unsafe_fn)]
+
+<span class="boring">fn main() {
+</span>use dora_operator_api::{register_operator, DoraOperator, DoraOutputSender, DoraStatus, Event};
+
+register_operator!(ExampleOperator);
+
+#[derive(Debug, Default)]
+struct ExampleOperator {
+    ticks: usize,
+}
+
+impl DoraOperator for ExampleOperator {
+    fn on_event(
+        &amp;mut self,
+        event: &amp;Event,
+        output_sender: &amp;mut DoraOutputSender,
+    ) -&gt; Result&lt;DoraStatus, String&gt; {
+        match event {
+            Event::Input { id, data } =&gt; match *id {
+                &quot;tick&quot; =&gt; {
+                    self.ticks += 1;
+                }
+                &quot;random&quot; =&gt; {
+                    let parsed = {
+                        let data: [u8; 8] =
+                            (*data).try_into().map_err(|_| &quot;unexpected random data&quot;)?;
+                        u64::from_le_bytes(data)
+                    };
+                    let output = format!(
+                        &quot;operator received random value {parsed:#x} after {} ticks&quot;,
+                        self.ticks
+                    );
+                    output_sender.send(&quot;status&quot;.into(), output.into_bytes())?;
+                }
+                other =&gt; eprintln!(&quot;ignoring unexpected input {other}&quot;),
+            },
+            Event::Stop =&gt; {}
+            Event::InputClosed { id } =&gt; {
+                println!(&quot;input `{id}` was closed&quot;);
+                if *id == &quot;random&quot; {
+                    println!(&quot;`random` input was closed -&gt; exiting&quot;);
+                    return Ok(DoraStatus::Stop);
+                }
+            }
+            other =&gt; {
+                println!(&quot;received unknown event {other:?}&quot;);
+            }
+        }
+
+        Ok(DoraStatus::Continue)
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<ul>
+<li>And modify the root <code>Cargo.toml</code>:</li>
+</ul>
+<pre><code class="language-toml=">[workspace]
+
+members = [
+    &quot;rust-dataflow-example-node&quot;,
+    &quot;rust-dataflow-example-operator&quot;,
+]
+</code></pre>
+<h3 id="write-your-sink-node"><a class="header" href="#write-your-sink-node">Write your sink node</a></h3>
+<p>Let's write a <code>logger</code> which will print incoming data.</p>
+<ul>
+<li>Generate a new Rust binary (application):</li>
+</ul>
+<pre><code class="language-bash">cargo new sink_logger
+</code></pre>
+<p>with <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[package]
+name = &quot;rust-dataflow-example-sink&quot;
+version.workspace = true
+edition = &quot;2021&quot;
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dora-node-api = { workspace = true, features = [&quot;tracing&quot;] }
+eyre = &quot;0.6.8&quot;
+</code></pre>
+<p>with <code>src/main.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use dora_node_api::{self, DoraNode, Event};
+use eyre::{bail, Context, ContextCompat};
+
+fn main() -&gt; eyre::Result&lt;()&gt; {
+    let (_node, mut events) = DoraNode::init_from_env()?;
+
+    while let Some(event) = events.recv() {
+        match event {
+            Event::Input {
+                id,
+                metadata: _,
+                data,
+            } =&gt; match id.as_str() {
+                &quot;message&quot; =&gt; {
+                    let data = data.wrap_err(&quot;no data&quot;)?;
+                    let received_string = std::str::from_utf8(&amp;data)
+                        .wrap_err(&quot;received message was not utf8-encoded&quot;)?;
+                    println!(&quot;sink received message: {}&quot;, received_string);
+                    if !received_string.starts_with(&quot;operator received random value &quot;) {
+                        bail!(&quot;unexpected message format (should start with 'operator received random value')&quot;)
+                    }
+                    if !received_string.ends_with(&quot; ticks&quot;) {
+                        bail!(&quot;unexpected message format (should end with 'ticks')&quot;)
+                    }
+                }
+                other =&gt; eprintln!(&quot;Ignoring unexpected input `{other}`&quot;),
+            },
+            Event::Stop =&gt; {
+                println!(&quot;Received manual stop&quot;);
+            }
+            Event::InputClosed { id } =&gt; {
+                println!(&quot;Input `{id}` was closed&quot;);
+            }
+            other =&gt; eprintln!(&quot;Received unexpected input: {other:?}&quot;),
+        }
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<ul>
+<li>And modify the root <code>Cargo.toml</code>:</li>
+</ul>
+<pre><code class="language-toml=">[workspace]
+
+members = [
+    &quot;rust-dataflow-example-node&quot;,
+    &quot;rust-dataflow-example-operator&quot;,
+    &quot;rust-dataflow-example-sink&quot;
+]
+</code></pre>
+<h3 id="compile-everything"><a class="header" href="#compile-everything">Compile everything</a></h3>
+<pre><code class="language-bash">cargo build --all --release
+</code></pre>
+<h3 id="write-a-graph-definition"><a class="header" href="#write-a-graph-definition">Write a graph definition</a></h3>
+<p>Let's write the graph definition so that the nodes know who to communicate with.</p>
+<p><code>dataflow.yml</code></p>
+<pre><code class="language-yaml">nodes:
+  - id: rust-node
+    custom:
+      build: cargo build -p rust-dataflow-example-node
+      source: ../../target/debug/rust-dataflow-example-node
+      inputs:
+        tick: dora/timer/millis/10
+      outputs:
+        - random
+  - id: runtime-node
+    operators:
+      - id: rust-operator
+        build: cargo build -p rust-dataflow-example-operator
+        shared-library: ../../target/debug/rust_dataflow_example_operator
+        inputs:
+          tick: dora/timer/millis/100
+          random: rust-node/random
+        outputs:
+          - status
+  - id: rust-sink
+    custom:
+      build: cargo build -p rust-dataflow-example-sink
+      source: ../../target/debug/rust-dataflow-example-sink
+      inputs:
+        message: runtime-node/rust-operator/status
+</code></pre>
+<h3 id="run-it"><a class="header" href="#run-it">Run it!</a></h3>
+<ul>
+<li>Run the <code>dataflow</code>: </li>
+</ul>
+<pre><code class="language-bash">dora-daemon --run-dataflow dataflow.yml
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="installation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="installation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>

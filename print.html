@@ -1,0 +1,1477 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>dora-rs</title>
+                <meta name="robots" content="noindex" />
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">1.</strong> installation</a></li><li class="chapter-item expanded "><a href="getting-started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li class="chapter-item expanded affix "><li class="part-title">Reference Guide</li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">3.</strong> Overview</a></li><li class="chapter-item expanded "><a href="dataflow-config.html"><strong aria-hidden="true">4.</strong> Dataflow Configuration</a></li><li class="chapter-item expanded "><a href="rust-api.html"><strong aria-hidden="true">5.</strong> Rust API</a></li><li class="chapter-item expanded "><a href="c-api.html"><strong aria-hidden="true">6.</strong> C API</a></li><li class="chapter-item expanded "><a href="python-api.html"><strong aria-hidden="true">7.</strong> Python API</a></li><li class="chapter-item expanded affix "><li class="part-title">Brainstorming Ideas</li><li class="chapter-item expanded "><a href="state-management.html"><strong aria-hidden="true">8.</strong> State Management</a></li><li class="chapter-item expanded "><a href="library-vs-framework.html"><strong aria-hidden="true">9.</strong> Library vs Framework</a></li><li class="chapter-item expanded "><a href="communication-layer.html"><strong aria-hidden="true">10.</strong> Middleware Layer Abstraction</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">dora-rs</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="welcome-to-dora"><a class="header" href="#welcome-to-dora">Welcome to <code>dora</code>!</a></h1>
+<p><code>dora</code> goal is to be a low latency, composable, and distributed data flow.</p>
+<p>By using <code>dora</code>, you can define robotic applications as a graph of nodes that can be easily swapped and replaced. Those nodes can be shared and implemented in different languages such as Rust, Python or C. <code>dora</code> will then connect those nodes and try to provide as many features as possible to facilitate the dataflow.</p>
+<h2 id="-features"><a class="header" href="#-features">✨ Features</a></h2>
+<p>Composability as:</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+<code>YAML</code> declarative programming</li>
+<li><input disabled="" type="checkbox" checked=""/>
+polyglot:
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+Rust</li>
+<li><input disabled="" type="checkbox" checked=""/>
+C</li>
+<li><input disabled="" type="checkbox" checked=""/>
+C++</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Python</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Isolated operators and custom nodes that can be reused.</li>
+</ul>
+<p>Low latency as:</p>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+written in  <i>...Cough...blazingly fast ...Cough...</i> Rust.</li>
+<li><input disabled="" type="checkbox" checked=""/>
+PubSub communication with shared memory!</li>
+<li><input disabled="" type="checkbox"/>
+Zero-copy on read!</li>
+</ul>
+<p>Distributed as:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+PubSub communication between machines with <a href="https://github.com/eclipse-zenoh/zenoh"><code>zenoh</code></a></li>
+<li><input disabled="" type="checkbox" checked=""/>
+Distributed telemetry with <a href="https://github.com/open-telemetry/opentelemetry-rust"><code>opentelemetry</code></a></li>
+</ul>
+<h2 id="-license"><a class="header" href="#-license">⚖️ LICENSE</a></h2>
+<p>This project is licensed under Apache-2.0. Check out <a href="NOTICE.html">NOTICE.md</a> for more information.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>This project is in early development, and many features have yet to be implemented with breaking changes. Please don't take for granted the current design. The installation process will be streamlined in the future.</p>
+<h3 id="download-the-binaries-from-github"><a class="header" href="#download-the-binaries-from-github">Download the binaries from Github</a></h3>
+<p>Install <code>dora</code> binaries from GitHub releases:</p>
+<pre><code class="language-bash">wget https://github.com/dora-rs/dora/releases/download/&lt;version&gt;/dora-&lt;version&gt;-x86_64-Linux.zip
+unzip dora-&lt;version&gt;-x86_64-Linux.zip
+python3 -m pip install dora-rs==&lt;version&gt; ## For Python API
+PATH=$PATH:$(pwd)
+dora --help
+</code></pre>
+<h4 id="or-compile-from-source"><a class="header" href="#or-compile-from-source">Or compile from Source</a></h4>
+<p>Build it using:</p>
+<pre><code class="language-bash">git clone https://github.com/dora-rs/dora.git
+cd dora
+cargo build --all --release
+PATH=$PATH:$(pwd)/target/release
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h3 id="create-a-rust-workspace"><a class="header" href="#create-a-rust-workspace">Create a Rust workspace</a></h3>
+<ul>
+<li>Initiate the workspace with:</li>
+</ul>
+<pre><code class="language-bash">mkdir my_first_dataflow
+cd my_first_dataflow
+</code></pre>
+<ul>
+<li>Create the Cargo.toml file that will configure the entire workspace:</li>
+</ul>
+<p><code>Cargo.toml</code></p>
+<pre><code class="language-toml">[workspace]
+
+members = [
+    &quot;rust-dataflow-example-node&quot;,
+]
+</code></pre>
+<h3 id="write-your-first-node"><a class="header" href="#write-your-first-node">Write your first node</a></h3>
+<p>Let's write a node which sends the current time periodically. Let's make it after 100 iterations. The other nodes/operators will then exit as well because all sources closed.</p>
+<ul>
+<li>Generate a new Rust binary (application):</li>
+</ul>
+<pre><code class="language-bash">cargo new rust-dataflow-example-node
+</code></pre>
+<p>with <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[package]
+name = &quot;rust-dataflow-example-node&quot;
+version.workspace = true
+edition = &quot;2021&quot;
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dora-node-api = { workspace = true, features = [&quot;tracing&quot;] }
+eyre = &quot;0.6.8&quot;
+futures = &quot;0.3.21&quot;
+rand = &quot;0.8.5&quot;
+tokio = { version = &quot;1.24.2&quot;, features = [&quot;rt&quot;, &quot;macros&quot;] }
+</code></pre>
+<p>with <code>src/main.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use dora_node_api::{self, dora_core::config::DataId, DoraNode, Event};
+
+fn main() -&gt; eyre::Result&lt;()&gt; {
+    println!(&quot;hello&quot;);
+
+    let output = DataId::from(&quot;random&quot;.to_owned());
+
+    let (mut node, mut events) = DoraNode::init_from_env()?;
+
+    for i in 0..100 {
+        let event = match events.recv() {
+            Some(input) =&gt; input,
+            None =&gt; break,
+        };
+
+        match event {
+            Event::Input {
+                id,
+                metadata,
+                data: _,
+            } =&gt; match id.as_str() {
+                &quot;tick&quot; =&gt; {
+                    let random: u64 = rand::random();
+                    println!(&quot;tick {i}, sending {random:#x}&quot;);
+                    let data: &amp;[u8] = &amp;random.to_le_bytes();
+                    node.send_output(output.clone(), metadata.parameters, data.len(), |out| {
+                        out.copy_from_slice(data);
+                    })?;
+                }
+                other =&gt; eprintln!(&quot;Ignoring unexpected input `{other}`&quot;),
+            },
+            Event::Stop =&gt; println!(&quot;Received manual stop&quot;),
+            other =&gt; eprintln!(&quot;Received unexpected input: {other:?}&quot;),
+        }
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<h3 id="write-your-first-operator"><a class="header" href="#write-your-first-operator">Write your first operator</a></h3>
+<ul>
+<li>Generate a new Rust library:</li>
+</ul>
+<pre><code class="language-bash">cargo new rust-dataflow-example-operator --lib
+</code></pre>
+<p>with <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[package]
+name = &quot;rust-dataflow-example-operator&quot;
+version.workspace = true
+edition = &quot;2021&quot;
+license.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = [&quot;cdylib&quot;]
+
+[dependencies]
+dora-operator-api = { workspace = true }
+</code></pre>
+<p>with <code>src/lib.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![warn(unsafe_op_in_unsafe_fn)]
+
+<span class="boring">fn main() {
+</span>use dora_operator_api::{register_operator, DoraOperator, DoraOutputSender, DoraStatus, Event};
+
+register_operator!(ExampleOperator);
+
+#[derive(Debug, Default)]
+struct ExampleOperator {
+    ticks: usize,
+}
+
+impl DoraOperator for ExampleOperator {
+    fn on_event(
+        &amp;mut self,
+        event: &amp;Event,
+        output_sender: &amp;mut DoraOutputSender,
+    ) -&gt; Result&lt;DoraStatus, String&gt; {
+        match event {
+            Event::Input { id, data } =&gt; match *id {
+                &quot;tick&quot; =&gt; {
+                    self.ticks += 1;
+                }
+                &quot;random&quot; =&gt; {
+                    let parsed = {
+                        let data: [u8; 8] =
+                            (*data).try_into().map_err(|_| &quot;unexpected random data&quot;)?;
+                        u64::from_le_bytes(data)
+                    };
+                    let output = format!(
+                        &quot;operator received random value {parsed:#x} after {} ticks&quot;,
+                        self.ticks
+                    );
+                    output_sender.send(&quot;status&quot;.into(), output.into_bytes())?;
+                }
+                other =&gt; eprintln!(&quot;ignoring unexpected input {other}&quot;),
+            },
+            Event::Stop =&gt; {}
+            Event::InputClosed { id } =&gt; {
+                println!(&quot;input `{id}` was closed&quot;);
+                if *id == &quot;random&quot; {
+                    println!(&quot;`random` input was closed -&gt; exiting&quot;);
+                    return Ok(DoraStatus::Stop);
+                }
+            }
+            other =&gt; {
+                println!(&quot;received unknown event {other:?}&quot;);
+            }
+        }
+
+        Ok(DoraStatus::Continue)
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<ul>
+<li>And modify the root <code>Cargo.toml</code>:</li>
+</ul>
+<pre><code class="language-toml=">[workspace]
+
+members = [
+    &quot;rust-dataflow-example-node&quot;,
+    &quot;rust-dataflow-example-operator&quot;,
+]
+</code></pre>
+<h3 id="write-your-sink-node"><a class="header" href="#write-your-sink-node">Write your sink node</a></h3>
+<p>Let's write a <code>logger</code> which will print incoming data.</p>
+<ul>
+<li>Generate a new Rust binary (application):</li>
+</ul>
+<pre><code class="language-bash">cargo new sink_logger
+</code></pre>
+<p>with <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">[package]
+name = &quot;rust-dataflow-example-sink&quot;
+version.workspace = true
+edition = &quot;2021&quot;
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dora-node-api = { workspace = true, features = [&quot;tracing&quot;] }
+eyre = &quot;0.6.8&quot;
+</code></pre>
+<p>with <code>src/main.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use dora_node_api::{self, DoraNode, Event};
+use eyre::{bail, Context, ContextCompat};
+
+fn main() -&gt; eyre::Result&lt;()&gt; {
+    let (_node, mut events) = DoraNode::init_from_env()?;
+
+    while let Some(event) = events.recv() {
+        match event {
+            Event::Input {
+                id,
+                metadata: _,
+                data,
+            } =&gt; match id.as_str() {
+                &quot;message&quot; =&gt; {
+                    let data = data.wrap_err(&quot;no data&quot;)?;
+                    let received_string = std::str::from_utf8(&amp;data)
+                        .wrap_err(&quot;received message was not utf8-encoded&quot;)?;
+                    println!(&quot;sink received message: {}&quot;, received_string);
+                    if !received_string.starts_with(&quot;operator received random value &quot;) {
+                        bail!(&quot;unexpected message format (should start with 'operator received random value')&quot;)
+                    }
+                    if !received_string.ends_with(&quot; ticks&quot;) {
+                        bail!(&quot;unexpected message format (should end with 'ticks')&quot;)
+                    }
+                }
+                other =&gt; eprintln!(&quot;Ignoring unexpected input `{other}`&quot;),
+            },
+            Event::Stop =&gt; {
+                println!(&quot;Received manual stop&quot;);
+            }
+            Event::InputClosed { id } =&gt; {
+                println!(&quot;Input `{id}` was closed&quot;);
+            }
+            other =&gt; eprintln!(&quot;Received unexpected input: {other:?}&quot;),
+        }
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<ul>
+<li>And modify the root <code>Cargo.toml</code>:</li>
+</ul>
+<pre><code class="language-toml=">[workspace]
+
+members = [
+    &quot;rust-dataflow-example-node&quot;,
+    &quot;rust-dataflow-example-operator&quot;,
+    &quot;rust-dataflow-example-sink&quot;
+]
+</code></pre>
+<h3 id="compile-everything"><a class="header" href="#compile-everything">Compile everything</a></h3>
+<pre><code class="language-bash">cargo build --all --release
+</code></pre>
+<h3 id="write-a-graph-definition"><a class="header" href="#write-a-graph-definition">Write a graph definition</a></h3>
+<p>Let's write the graph definition so that the nodes know who to communicate with.</p>
+<p><code>dataflow.yml</code></p>
+<pre><code class="language-yaml">nodes:
+  - id: rust-node
+    custom:
+      build: cargo build -p rust-dataflow-example-node
+      source: ../../target/debug/rust-dataflow-example-node
+      inputs:
+        tick: dora/timer/millis/10
+      outputs:
+        - random
+  - id: runtime-node
+    operators:
+      - id: rust-operator
+        build: cargo build -p rust-dataflow-example-operator
+        shared-library: ../../target/debug/rust_dataflow_example_operator
+        inputs:
+          tick: dora/timer/millis/100
+          random: rust-node/random
+        outputs:
+          - status
+  - id: rust-sink
+    custom:
+      build: cargo build -p rust-dataflow-example-sink
+      source: ../../target/debug/rust-dataflow-example-sink
+      inputs:
+        message: runtime-node/rust-operator/status
+</code></pre>
+<h3 id="run-it"><a class="header" href="#run-it">Run it!</a></h3>
+<ul>
+<li>Run the <code>dataflow</code>: </li>
+</ul>
+<pre><code class="language-bash">dora-daemon --run-dataflow dataflow.yml
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="design-overview"><a class="header" href="#design-overview">Design Overview</a></h1>
+<p>The dora framework is structured into different components:</p>
+<p><img src="overview.svg" alt="design diagram" /></p>
+<p>The following main components exist:</p>
+<ul>
+<li>
+<p><strong>Nodes:</strong> Dora nodes are separate, isolated processes that communicate with other nodes through the dora library. Nodes can be either a custom, user-specified program, or a dora runtime node, which allows to run dora <em>operators</em>. Nodes implement their own <code>main</code> function and thus have full control over their execution.</p>
+<p>Nodes use the dora <em>library</em> to communicate with other nodes, which is available for multiple languages (Rust, C; maybe Python, WASM). Communication happens through a <em>communication layer</em>, which will be <code>zenoh</code> in our first version. We plan to add more options in the future. All communication layer implementations should be robust against disconnections, so operators should be able to keep running even if they lose the connection to the coordinator.</p>
+</li>
+<li>
+<p><strong>Operators:</strong> Operators are light-weight, cooperative, library-based components that are executed by a dora runtime node. They must implement a specific interface, depending on the used language. Operators can use a wide range of advanced features provided by the dora runtime, for example priority scheduling or native deadline support.</p>
+</li>
+<li>
+<p><strong>Coordinator:</strong> The coordinator is responsible for reading the dataflow from a YAML file, verifying it, and deploying the nodes and operators to the specified or automatically determined machines. It monitors the operator's health and implements high level cluster management functionality. For example, we could implement automatic scaling for cloud nodes or operator replication and restarts. The coordinator can be controlled through a command line program (CLI).</p>
+</li>
+</ul>
+<h2 id="operators-vs-custom-nodes"><a class="header" href="#operators-vs-custom-nodes">Operators vs Custom Nodes</a></h2>
+<p>There are two ways to implement an operation in dora: Either as a dora operator, or as a custom nodes. Both approaches have their advantages and drawbacks, as explained below. In general, it is recommended to create dora operators and only use custom nodes when necessary.</p>
+<p>Operators have the following advantages:</p>
+<ul>
+<li>They can use a wide range of advanced functionality provided by the dora runtime nodes. This includes special scheduling strategies and features such as deadlines. </li>
+<li>They are <em>light-weight</em>, so they only occupy minimal amounts of memory. This makes it possible to run thousands of operators on the same machine.</li>
+<li>They can use runtime-managed state storage, for robustness or for sharing state with other operators.</li>
+<li>They <em>share the address space</em> with other operators on the same node, which makes communication much faster.</li>
+</ul>
+<p>Custom nodes provide a different set of advantages:</p>
+<ul>
+<li>Each node is a separate, isolated process, which can be important for security-critical operations.</li>
+<li>They support pinned resources. For example, a CPU core can be pinned to a custom node through the dataflow configuration file.</li>
+<li>They have full control over their execution, which allows to create complex input and wake-up rules.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dataflow-specification"><a class="header" href="#dataflow-specification">Dataflow Specification</a></h1>
+<p>Dataflows are specified through a YAML file. This section presents our current draft for the file format. It only includes basic functionality for now, we will extend it later when we introduce more advanced features.</p>
+<h2 id="dataflow"><a class="header" href="#dataflow">Dataflow</a></h2>
+<p>Dataflows are specified through the following format:</p>
+<pre><code class="language-yaml">nodes:
+    - id: foo
+      # ... (see below)
+    - id: bar
+      # ... (see below)
+</code></pre>
+<h3 id="inputs-and-outputs"><a class="header" href="#inputs-and-outputs">Inputs and Outputs</a></h3>
+<p>Each operator or custom node has a separate namespace for its outputs. To refer to outputs, the <operator>/<output> syntax is used. This way, there are no name conflicts between operators.</p>
+<p>Input operands are specified using the <name>: <operator>/<output> syntax, where <data> is the internal name that should be used for the operand. The main advantage of this name mapping is that the same operator executable can be reused multiple times on different input.</p>
+<h2 id="nodes"><a class="header" href="#nodes">Nodes</a></h2>
+<p>Nodes are defined using the following format:</p>
+<pre><code class="language-yaml">nodes:
+  - id: some-unique-id
+    # For nodes with multiple operators
+    operators:
+      - id: operator-1
+        # ... (see below)
+      - id: operator-2
+        # ... (see below)
+
+
+
+  - id: some-unique-id-2
+    custom:
+      source: path/to/timestamp
+      env:
+        - ENVIRONMENT_VARIABLE_1: true
+      working-directory: some/path
+
+      inputs:
+        input_1: operator_2/output_4
+        input_2: custom_node_2/output_4
+      outputs:
+        - output_1
+ 
+  # Unique operator
+  - id: some-unique-id-3
+    operator:
+        # ... (see below)
+</code></pre>
+<p>Nodes must provide either a <code>operators</code> field, or a <code>custom</code> field, but not both. Nodes with an <code>operators</code> field run a dora runtime process, which runs and manages the specified operators. Nodes with a <code>custom</code> field, run a custom executable.</p>
+<h3 id="custom-nodes"><a class="header" href="#custom-nodes">Custom Nodes</a></h3>
+<p>Custom nodes specify the executable name and arguments like a normal shell operation through the <code>run</code> field. Through the optional <code>env</code> field, it is possible to set environment variables for the process. The optional <code>working-directory</code> field allows to overwrite the directory in which the program is started.</p>
+<p>To integrate with the rest of the dora dataflow, custom nodes must specify their inputs and outputs, similar to operators. They can reference outputs of both operators, and other custom nodes.</p>
+<h2 id="operators"><a class="header" href="#operators">Operators</a></h2>
+<p>Operators are defined through the following format:</p>
+<pre><code class="language-yaml">- id: unique-operator-id
+  name: Human-Readable Operator Name
+  description: An optional description of the operators's purpose.
+
+  inputs:
+    input_1: source_operator_2/output_1
+    input_2: custom_node_1/output_1
+  outputs:
+    - output_1
+
+  ## ONE OF:
+  shared_library: &quot;path/to/shared_lib&quot; # file extension and `lib` prefix are added automatically
+  python: &quot;path/to/python_file.py&quot;
+  wasm: &quot;path/to/wasm_file.wasm&quot;
+</code></pre>
+<p>Operators must list all their inputs and outputs. Inputs can be linked to arbitrary outputs of other operators or custom nodes.</p>
+<p>There are multiple ways to implement an operator:</p>
+<ul>
+<li>as a C-compatible shared library</li>
+<li>as a Python object</li>
+<li>as a WebAssembly (WASM) module</li>
+</ul>
+<p>Each operator must specify exactly one implementation. The implementation must follow a specific format that is specified by dora.</p>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<pre><code class="language-yaml">nodes:
+  - id: rust-node
+    custom:
+      build: cargo build -p rust-dataflow-example-node
+      source: ../../target/debug/rust-dataflow-example-node
+      inputs:
+        tick: dora/timer/millis/10
+      outputs:
+        - random
+  - id: runtime-node
+    operators:
+      - id: rust-operator
+        build: cargo build -p rust-dataflow-example-operator
+        shared-library: ../../target/debug/rust_dataflow_example_operator
+        inputs:
+          tick: dora/timer/millis/100
+          random: rust-node/random
+        outputs:
+          - status
+  - id: rust-sink
+    custom:
+      build: cargo build -p rust-dataflow-example-sink
+      source: ../../target/debug/rust-dataflow-example-sink
+      inputs:
+        message: runtime-node/rust-operator/status
+</code></pre>
+<h2 id="todo-integration-with-ros-12"><a class="header" href="#todo-integration-with-ros-12">TODO: Integration with ROS 1/2</a></h2>
+<p>To integrate dora-rs operators with ROS1 or ROS2 operators, we plan to provide special <em>bridge operators</em>. These operators act as a sink in one dataflow framework and push all messages to a different dataflow framework, where they act as source.</p>
+<p>For example, we plan to provide a <code>to_ros_2</code> operator, which takes a single <code>data</code> input, which is then published to a specified ROS 2 dataflow.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rust-api"><a class="header" href="#rust-api">Rust API</a></h1>
+<h2 id="operator"><a class="header" href="#operator">Operator</a></h2>
+<p>The operator API is a framework for you to implement. The implemented operator will be managed by <code>dora</code>. This framework enable us to make optimisation and provide advanced features. It is the recommended way of using <code>dora</code>.</p>
+<p>An operator requires to be registered and implement the <code>DoraOperator</code> trait. It is composed of an <code>on_event</code> method that defines the behaviour of the operator when there is an event such as receiving an input for example.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![warn(unsafe_op_in_unsafe_fn)]
+
+<span class="boring">fn main() {
+</span>use dora_operator_api::{register_operator, DoraOperator, DoraOutputSender, DoraStatus, Event};
+
+register_operator!(ExampleOperator);
+
+#[derive(Debug, Default)]
+struct ExampleOperator {
+    ticks: usize,
+}
+
+impl DoraOperator for ExampleOperator {
+    fn on_event(
+        &amp;mut self,
+        event: &amp;Event,
+        output_sender: &amp;mut DoraOutputSender,
+    ) -&gt; Result&lt;DoraStatus, String&gt; {
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="try-it-out"><a class="header" href="#try-it-out">Try it out!</a></h3>
+<ul>
+<li>Generate a new Rust library</li>
+</ul>
+<pre><code class="language-bash">cargo new rust-dataflow-example-operator --lib
+</code></pre>
+<p><code>Cargo.toml</code></p>
+<pre><code class="language-toml">[package]
+name = &quot;rust-dataflow-example-operator&quot;
+version.workspace = true
+edition = &quot;2021&quot;
+license.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = [&quot;cdylib&quot;]
+
+[dependencies]
+dora-operator-api = { workspace = true }
+</code></pre>
+<p><code>src/lib.rs</code></p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![warn(unsafe_op_in_unsafe_fn)]
+
+<span class="boring">fn main() {
+</span>use dora_operator_api::{register_operator, DoraOperator, DoraOutputSender, DoraStatus, Event};
+
+register_operator!(ExampleOperator);
+
+#[derive(Debug, Default)]
+struct ExampleOperator {
+    ticks: usize,
+}
+
+impl DoraOperator for ExampleOperator {
+    fn on_event(
+        &amp;mut self,
+        event: &amp;Event,
+        output_sender: &amp;mut DoraOutputSender,
+    ) -&gt; Result&lt;DoraStatus, String&gt; {
+        match event {
+            Event::Input { id, data } =&gt; match *id {
+                &quot;tick&quot; =&gt; {
+                    self.ticks += 1;
+                }
+                &quot;random&quot; =&gt; {
+                    let parsed = {
+                        let data: [u8; 8] =
+                            (*data).try_into().map_err(|_| &quot;unexpected random data&quot;)?;
+                        u64::from_le_bytes(data)
+                    };
+                    let output = format!(
+                        &quot;operator received random value {parsed:#x} after {} ticks&quot;,
+                        self.ticks
+                    );
+                    output_sender.send(&quot;status&quot;.into(), output.into_bytes())?;
+                }
+                other =&gt; eprintln!(&quot;ignoring unexpected input {other}&quot;),
+            },
+            Event::Stop =&gt; {}
+            Event::InputClosed { id } =&gt; {
+                println!(&quot;input `{id}` was closed&quot;);
+                if *id == &quot;random&quot; {
+                    println!(&quot;`random` input was closed -&gt; exiting&quot;);
+                    return Ok(DoraStatus::Stop);
+                }
+            }
+            other =&gt; {
+                println!(&quot;received unknown event {other:?}&quot;);
+            }
+        }
+
+        Ok(DoraStatus::Continue)
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<ul>
+<li>Build it:</li>
+</ul>
+<pre><code class="language-bash">cargo build --release
+</code></pre>
+<ul>
+<li>Link it in your graph as:</li>
+</ul>
+<pre><code class="language-yaml">        build: cargo build -p rust-dataflow-example-operator
+        shared-library: ../../target/debug/rust_dataflow_example_operator
+        inputs:
+          tick: dora/timer/millis/100
+          random: rust-node/random
+        outputs:
+          - status
+  - id: rust-sink
+    custom:
+</code></pre>
+<p>This example can be found in <code>examples</code>.</p>
+<h2 id="custom-node"><a class="header" href="#custom-node">Custom Node</a></h2>
+<p>The custom node API allow you to integrate <code>dora</code> into your application. It allows you to retrieve input and send output in any fashion you want. </p>
+<h4 id="doranodeinit_from_env"><a class="header" href="#doranodeinit_from_env"><code>DoraNode::init_from_env()</code></a></h4>
+<p><code>DoraNode::init_from_env()</code> initiate a node from environment variables set by <code>dora-coordinator</code> </p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let (mut node, mut events) = DoraNode::init_from_env()?;
+<span class="boring">}
+</span></code></pre></pre>
+<h4 id="recv"><a class="header" href="#recv"><code>.recv()</code></a></h4>
+<p><code>.recv()</code> wait for the next event on the events stream.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let event = events.recv();
+<span class="boring">}
+</span></code></pre></pre>
+<h4 id="send_output"><a class="header" href="#send_output"><code>.send_output(...)</code></a></h4>
+<p><code>send_output</code> send data from the node to the other nodes.
+We take a closure as an input to enable zero copy on send.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>node.send_output(
+    &amp;data_id, 
+    metadata.parameters,
+    data.len(),
+    |out| {
+        out.copy_from_slice(data);
+    })?;
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="try-it-out-1"><a class="header" href="#try-it-out-1">Try it out!</a></h3>
+<ul>
+<li>Generate a new Rust binary (application):</li>
+</ul>
+<pre><code class="language-bash">cargo new rust-dataflow-example-node
+</code></pre>
+<pre><code class="language-toml">[package]
+name = &quot;rust-dataflow-example-node&quot;
+version.workspace = true
+edition = &quot;2021&quot;
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dora-node-api = { workspace = true, features = [&quot;tracing&quot;] }
+eyre = &quot;0.6.8&quot;
+futures = &quot;0.3.21&quot;
+rand = &quot;0.8.5&quot;
+tokio = { version = &quot;1.24.2&quot;, features = [&quot;rt&quot;, &quot;macros&quot;] }
+</code></pre>
+<p><code>src/main.rs</code></p>
+<pre><pre class="playground"><code class="language-rust">use dora_node_api::{self, dora_core::config::DataId, DoraNode, Event};
+
+fn main() -&gt; eyre::Result&lt;()&gt; {
+    println!(&quot;hello&quot;);
+
+    let output = DataId::from(&quot;random&quot;.to_owned());
+
+    let (mut node, mut events) = DoraNode::init_from_env()?;
+
+    for i in 0..100 {
+        let event = match events.recv() {
+            Some(input) =&gt; input,
+            None =&gt; break,
+        };
+
+        match event {
+            Event::Input {
+                id,
+                metadata,
+                data: _,
+            } =&gt; match id.as_str() {
+                &quot;tick&quot; =&gt; {
+                    let random: u64 = rand::random();
+                    println!(&quot;tick {i}, sending {random:#x}&quot;);
+                    let data: &amp;[u8] = &amp;random.to_le_bytes();
+                    node.send_output(output.clone(), metadata.parameters, data.len(), |out| {
+                        out.copy_from_slice(data);
+                    })?;
+                }
+                other =&gt; eprintln!(&quot;Ignoring unexpected input `{other}`&quot;),
+            },
+            Event::Stop =&gt; println!(&quot;Received manual stop&quot;),
+            other =&gt; eprintln!(&quot;Received unexpected input: {other:?}&quot;),
+        }
+    }
+
+    Ok(())
+}
+</code></pre></pre>
+<ul>
+<li>Link it in your graph as:</li>
+</ul>
+<pre><code class="language-yaml">      inputs:
+        tick: dora/timer/millis/10
+      outputs:
+        - random
+  - id: runtime-node
+    operators:
+      - id: rust-operator
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="c-api"><a class="header" href="#c-api">C API</a></h1>
+<h2 id="operator-1"><a class="header" href="#operator-1">Operator</a></h2>
+<p>The operator API is a framework for you to implement. The implemented operator will be managed by <code>dora</code>. This framework enable us to make optimisation and provide advanced features.</p>
+<p>The operator definition is composed of 3 functions, <code>dora_init_operator</code> that initialise the operator and its context. <code>dora_drop_operator</code> that free the memory, and <code>dora_on_event</code> that action the logic of the operator on receiving an input.</p>
+<pre><code class="language-c">#include &quot;../../apis/c/operator/operator_api.h&quot;
+#include &lt;assert.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+DoraInitResult_t dora_init_operator(void)
+{
+    void *context = malloc(1);
+    char *context_char = (char *)context;
+    *context_char = 0;
+
+    DoraInitResult_t result = {.operator_context = context};
+    return result;
+}
+
+DoraResult_t dora_drop_operator(void *operator_context)
+{
+    free(operator_context);
+
+    DoraResult_t result = {};
+    return result;
+}
+
+OnEventResult_t dora_on_event(
+    const RawEvent_t *event,
+    const SendOutput_t *send_output,
+    void *operator_context)
+{
+</code></pre>
+<h3 id="try-it-out-2"><a class="header" href="#try-it-out-2">Try it out!</a></h3>
+<ul>
+<li>Create an <code>operator.c</code> file:</li>
+</ul>
+<pre><code class="language-c">#include &quot;../../apis/c/operator/operator_api.h&quot;
+#include &lt;assert.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+DoraInitResult_t dora_init_operator(void)
+{
+    void *context = malloc(1);
+    char *context_char = (char *)context;
+    *context_char = 0;
+
+    DoraInitResult_t result = {.operator_context = context};
+    return result;
+}
+
+DoraResult_t dora_drop_operator(void *operator_context)
+{
+    free(operator_context);
+
+    DoraResult_t result = {};
+    return result;
+}
+
+OnEventResult_t dora_on_event(
+    const RawEvent_t *event,
+    const SendOutput_t *send_output,
+    void *operator_context)
+{
+    char *counter = (char *)operator_context;
+
+    if (event-&gt;input != NULL)
+    {
+        // input event
+        Input_t *input = event-&gt;input;
+
+        char id[input-&gt;id.len + 1];
+        memcpy(id, input-&gt;id.ptr, input-&gt;id.len);
+        id[input-&gt;id.len] = 0;
+
+        if (strcmp(id, &quot;message&quot;) == 0)
+        {
+            char data[input-&gt;data.len + 1];
+            memcpy(data, input-&gt;data.ptr, input-&gt;data.len);
+            data[input-&gt;data.len] = 0;
+
+            *counter += 1;
+            printf(&quot;C operator received message `%s`, counter: %i\n&quot;, data, *counter);
+
+            char *out_id = &quot;counter&quot;;
+            char *out_id_heap = strdup(out_id);
+
+            int data_alloc_size = 100;
+            char *out_data = (char *)malloc(data_alloc_size);
+            int count = snprintf(out_data, data_alloc_size, &quot;The current counter value is %d&quot;, *counter);
+            assert(count &gt;= 0 &amp;&amp; count &lt; 100);
+
+            Output_t output = {.id = {
+                                   .ptr = (uint8_t *)out_id_heap,
+                                   .len = strlen(out_id_heap),
+                                   .cap = strlen(out_id_heap) + 1,
+                               },
+                               .data = {.ptr = (uint8_t *)out_data, .len = strlen(out_data), .cap = data_alloc_size}};
+            DoraResult_t res = (send_output-&gt;send_output.call)(send_output-&gt;send_output.env_ptr, output);
+
+            OnEventResult_t result = {.result = res, .status = DORA_STATUS_CONTINUE};
+            return result;
+        }
+        else
+        {
+            printf(&quot;C operator received unexpected input %s, context: %i\n&quot;, id, *counter);
+        }
+    }
+    if (event-&gt;stop)
+    {
+        printf(&quot;C operator received stop event\n&quot;);
+    }
+
+    OnEventResult_t result = {.status = DORA_STATUS_CONTINUE};
+    return result;
+}
+</code></pre>
+<pre><code>  -ladvapi32 -luserenv -lkernel32 -lws2_32 -lbcrypt -lncrypt -lschannel -lntdll -liphlpapi
+  -lcfgmgr32 -lcredui -lcrypt32 -lcryptnet -lfwpuclnt -lgdi32 -lmsimg32 -lmswsock -lole32
+  -lopengl32 -lsecur32 -lshell32 -lsynchronization -luser32 -lwinspool
+  -Wl,-nodefaultlib:libcmt -D_DLL -lmsvcrt
+  ```
+  Also: On Windows, the output file should have an `.exe` extension: `--output build/c_node.exe`
+</code></pre>
+<ul>
+<li>
+<p>Repeat the previous step for the <code>sink.c</code> executable</p>
+</li>
+<li>
+<p>Link it in your graph as:</p>
+</li>
+</ul>
+<pre><code class="language-yaml">        inputs:
+          message: c_node/message
+        outputs:
+          - counter
+  - id: c_sink
+    custom:
+      source: build/c_sink
+      inputs:
+</code></pre>
+<h2 id="custom-node-1"><a class="header" href="#custom-node-1">Custom Node</a></h2>
+<p>The custom node API allow you to integrate <code>dora</code> into your application. It allows you to retrieve input and send output in any fashion you want. </p>
+<h4 id="init_dora_context_from_env"><a class="header" href="#init_dora_context_from_env"><code>init_dora_context_from_env</code></a></h4>
+<p><code>init_dora_context_from_env</code> initiate a node from environment variables set by <code>dora-coordinator</code> </p>
+<pre><code class="language-c">void *dora_context = init_dora_context_from_env();
+</code></pre>
+<h4 id="dora_next_event"><a class="header" href="#dora_next_event"><code>dora_next_event</code></a></h4>
+<p><code>dora_next_event</code> waits for the next event (e.g. an input). Use <code>read_dora_event_type</code> to read the event's type. Inputs are of type <code>DoraEventType_Input</code>. To extract the ID and data of an input event, use <code>read_dora_input_id</code>  and <code>read_dora_input_data</code> on the returned pointer. It is safe to ignore any events and handle only the events that are relevant to the node.</p>
+<pre><code class="language-c">void *input = dora_next_input(dora_context);
+
+// read out the ID as a UTF8-encoded string
+char *id;
+size_t id_len;
+read_dora_input_id(input, &amp;id, &amp;id_len);
+
+// read out the data as a byte array
+char *data;
+size_t data_len;
+read_dora_input_data(input, &amp;data, &amp;data_len);
+</code></pre>
+<h4 id="dora_send_output"><a class="header" href="#dora_send_output"><code>dora_send_output</code></a></h4>
+<p><code>dora_send_output</code> send data from the node.</p>
+<pre><code class="language-c">char out_id[] = &quot;tick&quot;;
+char out_data[50];
+dora_send_output(dora_context, out_id, strlen(out_id), out_data, out_data_len);
+</code></pre>
+<h3 id="try-it-out-3"><a class="header" href="#try-it-out-3">Try it out!</a></h3>
+<ul>
+<li>Create an <code>node.c</code> file:</li>
+</ul>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;assert.h&gt;
+#include &quot;../../apis/c/node/node_api.h&quot;
+
+// sleep
+#ifdef _WIN32
+#include &lt;Windows.h&gt;
+#else
+#include &lt;unistd.h&gt;
+#endif
+
+int main()
+{
+    printf(&quot;[c node] Hello World\n&quot;);
+
+    void *dora_context = init_dora_context_from_env();
+    if (dora_context == NULL)
+    {
+        fprintf(stderr, &quot;failed to init dora context\n&quot;);
+        return -1;
+    }
+
+    printf(&quot;[c node] dora context initialized\n&quot;);
+
+    for (char i = 0; i &lt; 100; i++)
+    {
+        void *event = dora_next_event(dora_context);
+        if (event == NULL)
+        {
+            printf(&quot;[c node] ERROR: unexpected end of event\n&quot;);
+            return -1;
+        }
+
+        enum DoraEventType ty = read_dora_event_type(event);
+
+        if (ty == DoraEventType_Input)
+        {
+            char *data;
+            size_t data_len;
+            read_dora_input_data(event, &amp;data, &amp;data_len);
+
+            assert(data_len == 0);
+
+            char out_id[] = &quot;message&quot;;
+            char out_data[50];
+            int out_data_len = sprintf(out_data, &quot;loop iteration %d&quot;, i);
+
+            dora_send_output(dora_context, out_id, strlen(out_id), out_data, out_data_len);
+        }
+        else if (ty == DoraEventType_Stop)
+        {
+            printf(&quot;[c node] received stop event\n&quot;);
+        }
+        else
+        {
+            printf(&quot;[c node] received unexpected event: %d\n&quot;, ty);
+        }
+
+        free_dora_event(event);
+    }
+
+    printf(&quot;[c node] received 10 events\n&quot;);
+
+    free_dora_context(dora_context);
+
+    printf(&quot;[c node] finished successfully\n&quot;);
+
+    return 0;
+}
+</code></pre>
+<ul>
+<li>
+<p>Create a <code>build</code> folder in this directory (i.e., next to the <code>node.c</code> file)</p>
+</li>
+<li>
+<p>Compile the <code>dora-node-api-c</code> crate into a static library.</p>
+<ul>
+<li>Run <code>cargo build -p dora-node-api-c --release</code></li>
+<li>The resulting staticlib is then available under <code>../../target/release/libdora-node-api-c.a</code>.</li>
+</ul>
+</li>
+<li>
+<p>Compile the <code>node.c</code> (e.g. using <code>clang</code>) and link the staticlib</p>
+<ul>
+<li>For example, use the following command:
+<pre><code>clang node.c &lt;FLAGS&gt; -ldora_node_api_c -L ../../target/release --output build/c_node
+</code></pre>
+</li>
+<li>The <code>&lt;FLAGS&gt;</code> depend on the operating system and the libraries that the C node uses. The following flags are required for each OS:</li>
+</ul>
+</li>
+<li>
+<p>Link it in your graph as:</p>
+</li>
+</ul>
+<pre><code class="language-yaml">        timer: dora/timer/millis/50
+      outputs:
+        - message
+  - id: runtime-node
+    operators:
+      - id: c_operator
+        shared-library: build/operator
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="python-api"><a class="header" href="#python-api">Python API</a></h1>
+<h2 id="operator-2"><a class="header" href="#operator-2">Operator</a></h2>
+<p>The operator API is a framework for you to implement. The implemented operator will be managed by <code>dora</code>. This framework enable us to make optimisation and provide advanced features. It is the recommended way of using <code>dora</code>.</p>
+<p>An operator requires an <code>on_event</code> method and requires to return a <code>DoraStatus</code> , depending of it needs to continue or stop.</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from typing import Callable
+
+import cv2
+import numpy as np
+import pyarrow as pa
+import torch
+
+from dora import DoraStatus
+
+pa.array([])
+
+CAMERA_WIDTH = 640
+CAMERA_HEIGHT = 480
+
+
+class Operator:
+    &quot;&quot;&quot;
+    Infering object from images
+    &quot;&quot;&quot;
+
+    def __init__(self):
+        self.model = torch.hub.load(&quot;ultralytics/yolov5&quot;, &quot;yolov5n&quot;)
+</code></pre>
+<blockquote>
+<p>For Python, we recommend to allocate the operator on a single runtime. A runtime will share the same GIL with several operators making those operators run almost sequentially. See: <a href="https://docs.rs/pyo3/latest/pyo3/marker/struct.Python.html#deadlocks">https://docs.rs/pyo3/latest/pyo3/marker/struct.Python.html#deadlocks</a></p>
+</blockquote>
+<h3 id="try-it-out-4"><a class="header" href="#try-it-out-4">Try it out!</a></h3>
+<ul>
+<li>Create an operator python file called <code>object_detection.py</code>:</li>
+</ul>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from typing import Callable
+from dora import Node
+
+import cv2
+import numpy as np
+import torch
+
+model = torch.hub.load(&quot;ultralytics/yolov5&quot;, &quot;yolov5n&quot;)
+
+node = Node()
+
+for event in node:
+    match event[&quot;type&quot;]:
+        case &quot;INPUT&quot;:
+            match event[&quot;id&quot;]:
+                case &quot;image&quot;:
+                    print(&quot;[object detection] received image input&quot;)
+                    frame = np.frombuffer(event[&quot;data&quot;], dtype=&quot;uint8&quot;)
+                    frame = cv2.imdecode(frame, -1)
+                    frame = frame[:, :, ::-1]  # OpenCV image (BGR to RGB)
+                    results = model(frame)  # includes NMS
+                    arrays = np.array(results.xyxy[0].cpu()).tobytes()
+
+                    node.send_output(&quot;bbox&quot;, arrays, event[&quot;metadata&quot;])
+                case other:
+                    print(&quot;[object detection] ignoring unexpected input:&quot;, other)
+        case &quot;STOP&quot;:
+            print(&quot;[object detection] received stop&quot;)
+        case &quot;ERROR&quot;:
+            print(&quot;[object detection] error: &quot;, event[&quot;error&quot;])
+        case other:
+            print(&quot;[object detection] received unexpected event:&quot;, other)
+</code></pre>
+<ul>
+<li>Link it in your graph as:</li>
+</ul>
+<pre><code class="language-yaml">      source: ./object_detection.py
+      inputs:
+        image: webcam/image
+      outputs:
+        - bbox
+
+  - id: plot
+</code></pre>
+<h2 id="custom-node-2"><a class="header" href="#custom-node-2">Custom Node</a></h2>
+<p>The custom node API allow you to integrate <code>dora</code> into your application. It allows you to retrieve input and send output in any fashion you want.</p>
+<h4 id="node"><a class="header" href="#node"><code>Node()</code></a></h4>
+<p><code>Node()</code> initiate a node from environment variables set by <code>dora-coordinator</code> </p>
+<pre><code class="language-python">from dora import Node
+
+node = Node()
+</code></pre>
+<h4 id="next-or-__next__-as-an-iterator"><a class="header" href="#next-or-__next__-as-an-iterator"><code>.next()</code> or <code>__next__()</code> as an iterator</a></h4>
+<p><code>.next()</code> gives you the next input that the node has received. It blocks until the next input becomes available. It will return <code>None</code> when all senders has been dropped.</p>
+<pre><code class="language-python">input_id, value, metadata = node.next()
+
+# or
+
+for input_id, value, metadata in node:
+</code></pre>
+<h4 id="send_outputoutput_id-data"><a class="header" href="#send_outputoutput_id-data"><code>.send_output(output_id, data)</code></a></h4>
+<p><code>send_output</code> send data from the node.</p>
+<pre><code class="language-python">node.send_output(&quot;string&quot;, b&quot;string&quot;, {&quot;open_telemetry_context&quot;: &quot;7632e76&quot;})
+</code></pre>
+<h3 id="try-it-out-5"><a class="header" href="#try-it-out-5">Try it out!</a></h3>
+<ul>
+<li>Install python node API:</li>
+</ul>
+<pre><code class="language-bash">pip install dora-rs
+</code></pre>
+<ul>
+<li>Create a python file called <code>webcam.py</code>:</li>
+</ul>
+<pre><code class="language-python">#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import time
+
+import cv2
+
+from dora import Node
+
+node = Node()
+
+video_capture = cv2.VideoCapture(0)
+
+start = time.time()
+
+# Run for 20 seconds
+while time.time() - start &lt; 10:
+    # Wait next dora_input
+    event = node.next()
+    match event[&quot;type&quot;]:
+        case &quot;INPUT&quot;:
+            ret, frame = video_capture.read()
+            if ret:
+                node.send_output(
+                    &quot;image&quot;,
+                    cv2.imencode(&quot;.jpg&quot;, frame)[1].tobytes(),
+                    event[&quot;metadata&quot;],
+                )
+        case &quot;STOP&quot;:
+            print(&quot;received stop&quot;)
+            break
+        case other:
+            print(&quot;received unexpected event:&quot;, other)
+            break
+
+video_capture.release()
+</code></pre>
+<ul>
+<li>Link it in your graph as:</li>
+</ul>
+<pre><code class="language-yaml">        tick:
+          source: dora/timer/millis/100
+          queue_size: 1000
+      outputs:
+        - image
+
+  - id: object_detection
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="state-management"><a class="header" href="#state-management">State Management</a></h1>
+<p>Most operations require to keep some sort of state between calls. This document describes the different ways to handle state in dora.</p>
+<h2 id="internal-state"><a class="header" href="#internal-state">Internal State</a></h2>
+<p>Operators are <code>struct</code> or object instances, so they can keep internal state between invocations. This state is private to the operator. When an operator exits or crashes, its internal state is lost.</p>
+<h2 id="saving-state"><a class="header" href="#saving-state">Saving State</a></h2>
+<p>To make themselves resilient against crashes, operators can use dora's state management. The dora runtime provides each operator with a private key-value store (KVS). Operators can save serialized state into the KVS by using the <code>save_state</code> function of the runtime:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn save_state(key: &amp;str, value: Vec&lt;u8&gt;)
+<span class="boring">}
+</span></code></pre></pre>
+<p>The runtime only stores the latest value for each key, so subsequent writes to the same key replace the earlier values. Serialization is required because the state must be self-contained (i.e. no pointers to other memory) and consistent (i.e. no half-updated state). Otherwise, state recovery might not be possible after an operator crash.</p>
+<p>To keep the performance overhead of this function low, it is recommended to use a suitable serialization format that stores the data with minimal memory and compute overhead. Text-based formats such as JSON are not recommended. Also, fast-changing state should be stored under a separate key to minimize the amount of state that needs to be written.</p>
+<h3 id="state-recovery"><a class="header" href="#state-recovery">State Recovery</a></h3>
+<p>When an operator crashes, the dora runtime restarts it and supplies it with the last version of the saved state. It does this by calling the operator's <code>restore_state</code> method:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn restore_state(&amp;mut self, state: HashMap&lt;String, Vec&lt;u8&gt;&gt;)
+<span class="boring">}
+</span></code></pre></pre>
+<p>In this method, the operator should deserialize and apply all state entries, and perform all custom consistency checks that are necessary.</p>
+<h2 id="sharing-state"><a class="header" href="#sharing-state">Sharing State</a></h2>
+<p>To share state between operators, dora provides access to a node-local key-value store:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn kvs_write(key: &amp;str, value: Vec&lt;u8&gt;)
+<span class="boring">}
+</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn kvs_read(key: &amp;str) -&gt; Vec&lt;u8&gt;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Todo:</p>
+<ul>
+<li>Consistency?</li>
+<li>Anna?</li>
+</ul>
+<h2 id="custom-nodes-1"><a class="header" href="#custom-nodes-1">Custom Nodes</a></h2>
+<p>Custom nodes have full control over the execution, so they can implement their own state management. Shared state can be accessed through the <code>kvs_read</code> and <code>kvs_write</code> functions of the dora library, which are equivalent to the respective functions provided by the dora runtime.</p>
+<p>Since custom nodes cannot use the recovery feature of the dora runtime, the <code>save_state</code>/<code>restore_state</code> functions are not available for them.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="framework"><a class="header" href="#framework">Framework</a></h1>
+<ul>
+<li>Runtime process
+<ul>
+<li>Talks with other runtime processes</li>
+<li>Across machines</li>
+<li>loop
+<ul>
+<li>listen for inputs</li>
+<li>invoke corresponding operator(s)</li>
+<li>collect and forward outputs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Operators
+<ul>
+<li>Connected to runtime
+<ul>
+<li>Via TCP socket (can be a separate process)
+<ul>
+<li>Single connection with high level message format, or</li>
+<li>Separate connection per input/output</li>
+</ul>
+</li>
+<li>Dynamically linked as shared library
+<ul>
+<li>Runtime invokes specific handler message directly with input(s)</li>
+<li>Outputs either:
+<ul>
+<li>Return a collection as result</li>
+<li>Call runtime function to send out result</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Input aggregation (i.e. waiting until multiple inputs are available)
+<ul>
+<li>by runtime -&gt; aggregation specified in config file</li>
+<li>by operator -&gt; custom handling possible</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="library"><a class="header" href="#library">Library</a></h1>
+<ul>
+<li>All sources/operator/sinks are separate processes that link a runtime library</li>
+<li>&quot;Orchestrator&quot; process
+<ul>
+<li>reads config file</li>
+<li>launches processes accordingly</li>
+<li>passes node config
+<ul>
+<li>as argument</li>
+<li>via env variable</li>
+<li>including input and output names</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Runtime library provides (async) functions to
+<ul>
+<li>wait for one or multiple inputs</li>
+<li>with timeouts</li>
+<li>send out outputs</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="a-hrefhttpsgithubcomdora-rsdoradiscussions53middleware-communication-layer-abstraction-mlaa"><a class="header" href="#a-hrefhttpsgithubcomdora-rsdoradiscussions53middleware-communication-layer-abstraction-mlaa"><a href="https://github.com/dora-rs/dora/discussions/53">Middleware (communication) layer abstraction (MLA)</a></a></h1>
+<p><code>dora</code> needs to implement MLA as a separate crate to provides a middleware abstraction layer that enables scalable, high performance communications for inter async tasks, intra-process (OS threads), interprocess communication on a single computer node or between different nodes in a computer network. MLA needs to support different communication patterns:</p>
+<ul>
+<li>publish-subscribe push / push pattern - the published message is pushed to subscribers</li>
+<li>publish-subscribe push / pull pattern - the published message is write to storage and later pulled by subscribers</li>
+<li>Request / reply pattern</li>
+<li>Point-to-point pattern</li>
+<li>Client / Server pattern</li>
+</ul>
+<p>The MLA needs to abstract following details: </p>
+<ul>
+<li>inter-async tasks (e.g., tokio channels), intraprocess (OS threads, e.g., shared memory), interprocess and inter-host / inter-network communication</li>
+<li>different transport layer implementations (shared memory, UDP, TCP)</li>
+<li>builtin support for multiple serialization / deserialization protocols, e.g, capnproto, protobuf, flatbuffers etc</li>
+<li>different language bindings to Rust, Python, C, C++ etc</li>
+<li>telemetry tools for logs, metrics, distributed tracing, live data monitoring (e.g., tap a live data), recording and replay</li>
+</ul>
+<p>Rust eco-system has abundant crates to provide underlaying communications, e.g.,:</p>
+<ul>
+<li>tokio / crossbeam provides different types of channels serving different purpose: mpsc, oneshot, broadcast, watch etc</li>
+<li>Tonic provides gRPC services</li>
+<li>Tower provides request/reply service</li>
+<li>Zenoh middleware provides many different pub/sub capabilities</li>
+</ul>
+<p>MLA also needs to provide high level APIs:</p>
+<ul>
+<li>publish(topic, value, optional fields):- optional fields may contain senders' identify to help MLA logics to satify above requirements</li>
+<li>subscriber(topic, optional fields)-&gt; future streams</li>
+<li>put(key, value, optional fields)</li>
+<li>get(key, optional fields) -&gt; value</li>
+<li>send(key, msg, optional fields)</li>
+<li>recv(key, optional fields)-&gt;value</li>
+</ul>
+<p>More info here: <a href="https://github.com/dora-rs/dora/discussions/53">#53</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+                        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+                
+    </body>
+</html>
